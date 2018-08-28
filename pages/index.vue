@@ -1,6 +1,8 @@
 <template>
   <section class="container">
     <div>
+      <hello message="Hello, I am a component"/>
+      <hello message="Hi there!"/>
       <app-logo/>
       <h1 class="title" v-tooltip="'You had me at hello!'">
         todo
@@ -24,10 +26,12 @@
 
 <script>
 import AppLogo from '~/components/AppLogo.vue'
+import Hello from '~/components/Hello.vue'
 
 export default {
   components: {
-    AppLogo
+    AppLogo,
+    Hello
   }
 }
 </script>
