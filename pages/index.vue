@@ -1,69 +1,86 @@
 <template>
-  <section class="container">
+  <div class="container" v-cloak>
     <div>
-      <hello message="Hello, I am a component"/>
-      <hello message="Hi there!"/>
-      <app-logo/>
-      <h1 class="title" v-tooltip="'You had me at hello!'">
-        todo
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
+      <section>
+        <input type="text" v-model="firstName" placeholder="Enter firstname">
+        <p>First Name: {{firstName}}</p>
+      </section>
+      <br/>
+      <section>
+        <button @click="counter += 1">Add 1</button>
+        <p>The button above has been clicked {{ counter }} times.</p>
+      </section>
+      <br />
+      <section>
+        <button @click="say('wazzup')">Say hi</button>
+      </section>
+      <br />
+      <section>
+        <button @click="isVisible = !isVisible">toggle</button>
+        <h1 v-show="isVisible">Hello!</h1>
+      </section>
+      <br />
+      <section>
+        <p v-if="counter > 10">{{ counter }} in stock.</p>    
+        <p v-else-if="counter > 0">Hurry up, there are just a few items left!</p>    
+        <p v-else>Oops! Sorry, we're all out!</p>  
+      </section>
+      <br />
+      <section>
+        <h4>TODOS</h4>
+        <ul class="todos">
+          <li v-for="(todo, index) in todos" :key="index">
+            {{todo.title}}
+          </li>
+        </ul>
+      </section>
+      <br />
+      <section>
+        <p v-html="rawHTML" />
+      </section>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
-import Hello from '~/components/Hello.vue'
 
 export default {
-  components: {
-    AppLogo,
-    Hello
+  data () {
+    return {
+      firstName: '',
+      counter: 0,
+      isVisible: true,
+      todos: [
+        {title: 'Meeting with Kelly'},
+        {title: '1-on-1 with Vince'}
+      ],
+      rawHTML: '<h1>Luke!</h1> <span>I am your father.</span> '
+    }
+  },
+  methods: {
+    say(message) {
+      alert(message);
+    }
   }
 }
 </script>
 
 <style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+  .container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  .container div {
+    padding: 20px; 
+  }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+  section {
+    padding: 50px;
+    background: #f1f1f1;
+    margin: 5px;
+  }
 </style>
-
