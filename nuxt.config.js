@@ -34,6 +34,10 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  plugins: ['~/plugins/v-tooltip.js'],
+  css: [
+    '@/assets/css/tooltip.css',
+  ]
 }
 

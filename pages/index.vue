@@ -2,7 +2,7 @@
   <section class="container">
     <div>
       <app-logo/>
-      <h1 class="title">
+      <h1 class="title" v-tooltip="'You had me at hello!'">
         todo
       </h1>
       <h2 class="subtitle">
