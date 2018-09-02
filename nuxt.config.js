@@ -35,7 +35,10 @@ module.exports = {
       }
     }
   },
-  plugins: ['~/plugins/v-tooltip.js'],
+  plugins: [
+    '~/plugins/v-tooltip.js',
+    '~filters/capitalize.js'
+  ],
   css: [
     '@/assets/css/tooltip.css',
   ]

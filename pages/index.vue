@@ -38,6 +38,9 @@
       <section>
         <p v-html="rawHTML" />
       </section>
+      <section>
+        {{ price | toSGD }}
+      </section>
     </div>
   </div>
 </template>
@@ -55,7 +58,8 @@ export default {
         {title: '1-on-1 with Vince'}
       ],
       rawHTML: '<h1>Luke!</h1> <span>I am your father.</span> ',
-      products: [1, 2, 3]
+      products: [1, 2, 3],
+      price: 300
     }
   },
   methods: {
