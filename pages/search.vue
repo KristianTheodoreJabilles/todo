@@ -7,7 +7,13 @@
 </template>
 
 <script>
+import mixin from '~/mixins/mixin';
+
 export default {
-  layout: 'search'
+  mixins:[mixin],
+  layout: 'search',
+  mounted() {
+    this.welcome();
+  }
 }
 </script>
